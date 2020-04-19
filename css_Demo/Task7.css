@@ -1,0 +1,23 @@
+form{
+    margin-top: 150px;
+    margin-left: 350px;
+    width: 572px;
+    border-left: 15px solid rgba(0, 128, 0, 0.651);
+    border-top: 30px solid rgba(0, 128, 0, 0.678);
+    border-right: 15px solid rgba(0, 128, 0, 0.678);
+    border-bottom: 9px solid rgba(0, 128, 0, 0.678);
+}
+table, tr ,th{
+    border: 1px dotted rgba(107, 104, 104, 0.212);
+    border-collapse: collapse;
+    width: 572px;
+}
+th{
+    background-color: rgba(255, 255, 0, 0.514);
+    padding: 10px;
+}
+#text{
+background-color: rgba(0, 128, 0, 0.678);
+padding-top: 8px;
+}
+
