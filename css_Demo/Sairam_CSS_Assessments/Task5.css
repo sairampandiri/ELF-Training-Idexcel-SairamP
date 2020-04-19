@@ -1,0 +1,39 @@
+body{
+    background-color: rgb(139, 110, 245);
+    
+}
+form{
+    background-color: rgb(31, 7, 53);
+    margin-left: 300px;
+    margin-top: 150px;
+    margin-right: 150px;
+    margin-bottom: 20px;
+    height: 420px;
+    width: 500px;
+    border-radius: 4px;
+}
+#ce{
+    margin: 10px;
+}
+#fn, #ln, #em, #pa{
+    margin: 10px;
+    padding: 10px;
+    margin-left: 40px;
+    padding-right: 140px;
+    border-radius: 5px;
+}
+#ch1, #ch4{
+    color: white;
+    font-size: 10px;
+}
+#ch3, #ch2{
+    margin-left: 40px;
+}
+#bu{
+    background-color: green;
+    border: 1px solid green;
+    padding: 5px;
+    margin-top: 40px;
+    margin-left: 400px;
+    
+}
