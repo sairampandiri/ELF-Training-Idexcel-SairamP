@@ -1,0 +1,19 @@
+body{
+    margin-top: 0px !important;
+    
+}
+#para{
+    margin-left: 60px ;
+}
+
+figure img{
+    width: 240px;
+    height: 240px;
+    border: 2px solid black;
+    padding: 8px;
+    margin: 7px;
+    transition: all 2s;
+}
+figure img:hover{
+    transform: scale(1.2,1.0);
+}
