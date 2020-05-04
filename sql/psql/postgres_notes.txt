@@ -1,8 +1,11 @@
 						Notes for plsql
 
+syntax to check which version is present in the system :
 
+	select version();
 
 syntax to create database:
+
 	create database database name;
 
 \d : It is to check  the relations(tables) present in the current database .
@@ -11,11 +14,16 @@ syntax to create database:
 
 \! cls : It is used to clear the screen.
 
+
 Syntax To create a database :
 
 	create database database_name;
 
-\l  : It will shows the list of the database.
+Syntax to change one database to another database:
+
+	\c database_name
+
+\l  : It will shows the list of the database present in the system.
 
 DDL:It helps to define the structure of the table 
 
@@ -52,9 +60,17 @@ rename database name by using alter command:
 
 	alter database old_database_name to new_database_name ;
 
+syntax for drop command:
 
+	drop database dbname;
 
+DML:
 
+syntax for insert  command:
+	insert into table_name(column_name1,column_name2,column_name3 ,column_name4,.........,column_name n)
+	values (value1,value2,value3,value4,.......,value n);
+
+insert into table_name values (value1,value2,value3,value4,.......,value n);
 
 
 
