@@ -75,4 +75,55 @@ insert into table_name values (value1,value2,value3,value4,.......,value n);
 
 
 
+DQL:
+========
+select command----> It helps to retrive the data from table.
+
+3 different ways to retrive the data from the table:
+
+1. projection   eg----->select *  from employee;
+2. selection	     eg----->select ename from employee;
+3. join
+
+Syntax for select command:
+
+select * /[Distinct name]column_name/expression[alias] from table_name;
+
+eg----->select *  from employee;
+
+
+eg----->select ename from employee;
+
+
+update:
+============
+eg----->update employee  set salary=25000.00;
+
+syntax:
+========
+eg----->update table_name set column_name=value;
+eg----->update employee set sal=30000.00 where empid=8;
+
+delete:
+============
+delete form employee;
+
+
+syntax:
+============
+delete from table_name;
+delete from employee where empid=9;
+
+synatx for where clause:
+=================
+select column1,cloumn2/* from table_name where condition;
+order of execution:
+eg------>select  * from employee empid=3;
+
+===============
+1. From
+2. Where
+3. Select
+
+
 
