@@ -1,0 +1,44 @@
+						Notes for plsql
+\l-
+
+
+
+syntax to create database:
+	create database database name;
+DDL:It helps to define the structure of the table
+
+In DDL we can use :
+1. create
+2. alter
+3. drop
+4. rename
+5. truncate
+
+syntax for create command :
+
+	create table table_name ( column1 , datatype , constraints);
+
+syntax for alter command :
+
+add column by using alter command:
+
+	alter table table_name add column column_name datatype:
+
+add column by using alter command:
+
+	alter table table_name drop column column_name :
+	
+	alter table table_name rename column old_column_name to new_column_name:
+	
+	alter table old_table_name rename to new_table_name;
+
+	alter database old_database_name to new_database_name ;
+
+
+To change the particular database the syntax is :  \c database_name;
+
+
+
+
+
+
