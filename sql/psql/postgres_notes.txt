@@ -1,11 +1,23 @@
 						Notes for plsql
-\l-
 
 
 
 syntax to create database:
 	create database database name;
-DDL:It helps to define the structure of the table
+
+\d : It is to check  the relations(tables) present in the current database .
+
+\d table_name : It will display the details of the table.
+
+\! cls : It is used to clear the screen.
+
+Syntax To create a database :
+
+	create database database_name;
+
+\l  : It will shows the list of the database.
+
+DDL:It helps to define the structure of the table 
 
 In DDL we can use :
 1. create
@@ -16,7 +28,7 @@ In DDL we can use :
 
 syntax for create command :
 
-	create table table_name ( column1 , datatype , constraints);
+	create table table_name ( column1  datatype  constraints ,column2  datatype  constraints ,-----,column n  datatype  constraints);
 
 syntax for alter command :
 
@@ -27,15 +39,21 @@ add column by using alter command:
 add column by using alter command:
 
 	alter table table_name drop column column_name :
+
+rename column name by using alter command:
 	
 	alter table table_name rename column old_column_name to new_column_name:
 	
+rename table name by using alter command:
+
 	alter table old_table_name rename to new_table_name;
+
+rename database name by using alter command:
 
 	alter database old_database_name to new_database_name ;
 
 
-To change the particular database the syntax is :  \c database_name;
+
 
 
 
