@@ -124,6 +124,49 @@ eg------>select  * from employee empid=3;
 1. From
 2. Where
 3. Select
+===============================
+
+1)  write a query to delete a record empid is 4?
+A. delete from employee where empid=4;
+
+2) write a query to display designation of the employees?
+A. select designation from employee;
+
+Alias:
+=====
+    syntax for alias:
+    ===========
+	select column_name AS alias_name from table table_name;
+			(or)
+	select column_name  alias_name from table table_name;
+
+3) write a query to display  the  column name designation as job_type ?
+A.  select designation job_type from employee;
+		or
+      select designation as job_type from employee;
+
+4) write a query to add the values and provide alias name to identify them?
+A. select 8*9 as multiplication;
+
+Assignment :
+=========
+
+5) write a query to display employee name with his current salary and salary with hike 25% for all the employees?
+A. select ename , salary as current_salary , salary+((salary*25)/100) as hike_salary from employee;
+
+6) write a query to display all the record of the employee  with increment salary as 500 for each employee?
+A. select *,salary+500 as Increment_salary from employee;
+
+7) write a query to display all the record of the employee  with decrement salary as 500 for each employee?
+A. select *,salary-500 Decrement_salary from employee;
+
+8) write a query to display employee name ,salary and annual salary for all the employees?
+A. select ename ,salary ,salary*12  as  Annual_salary from employee;
+
+9) write a query to display employee per day salary?
+A. select salary/30 as day_salary from employee;
+
+===========================================
 
 
 
