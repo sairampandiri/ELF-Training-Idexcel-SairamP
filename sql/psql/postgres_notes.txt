@@ -201,8 +201,51 @@ A. select * from employee where salary!=25000;
 	or
       select * from employee where salary<>25000;
 ===============================================================	
+AND operator :
+==========
+       syntax :
+       ======
+	select * from table_name where condition _1 and condition_2;
+
+ques 19)write a query to display all the records whose working as hr in deptno 10 from the employee table?
+ans. select * from employee where designation ='hr' and deptno=10;
+
+ques 20)write a query to display all the records whose working as salesman and hired after 2016 from the employee table?
+ans. select * from employee where designation ='salesman' and hiredate>'2016-12-31';
+
+ques 21)write a query to display all the employees whose working  in deptno 20 and salary should be 25000/-rs from the employee table?
+ans. select * from employee where designation ='hr' and deptno=20 and salary>25000;
+
+OR operator :
+==========
+        syntax :
+        =====
+	select * from table_name where condition _1 or condition_2;	
+
+ques 22)write a query to display all the records whose is working as hr in deptno 20 or 10 from the employee table?
+ans.  select * from employee where deptno=10 or deptno=20;
+
+ques 23)write a query to display all the records whose working as hr in deptno 20 or 10 from the employee table?
+ans. select ename, salary ,deptno from employee where designation='tester' or salary=15000;
+
+ASSIGNMENT:
+
+ques 24) write a query to display  name of all the employees whose is working as a tester as well as working in deptno 30 or working as a clerk whose salary is                     greater than or equal to 15000/- from the employee table? 
+ans. select ename from employee where (designation='testor' and deptno=30) or (designation='clerk' and salary >= 15000);
+
+NOT operator :
+===========
+        syntax :
+        ======
+	select * from table_name where not condition;
+
+ques 25)write a query to display all the employees except in deptno 20?
+ans. select * from employee where not deptno=20;
+=========================================================================
 
 
+
+	
 
 
 
