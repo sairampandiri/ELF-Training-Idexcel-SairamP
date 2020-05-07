@@ -1,8 +1,7 @@
 						Notes for plsql
 
-syntax to check which version is present in the system :
-
-	select version();
+ques 1) write a query  to check which version is present in the system 
+A. select version();
 
 syntax to create database:
 
@@ -171,33 +170,33 @@ DISTINCT :
         Syntax:
 	select distinct column_name from table_name;
 
-ques 1) write a query to display the designation by using distinct keyword from the employee table?
+ques 10) write a query to display the designation by using distinct keyword from the employee table?
 A.select distinct designation from employee;
 
-ques 2) write a query to display the designation   and deptno by using distinct keyword from the employee table?
+ques 11) write a query to display the designation   and deptno by using distinct keyword from the employee table?
 A. select distinct designation,deptno from employee;
 
 comparison operator:
 -------------------------
-ques 3) write a query to display all the record of the employee whose deptno is 10 from employee table?
+ques 12) write a query to display all the record of the employee whose deptno is 10 from employee table?
 A.  select * from employee where deptno=10;
 
-ques 4) write a query to display all the record of the employee whose salary is greater than 25000 from employee table?
+ques 13) write a query to display all the record of the employee whose salary is greater than 25000 from employee table?
  A. select * from employee where salary>25000;
 
-ques 5) write a query to display all the record of the employee whose salary is greater than and equals to 25000 from employee table?
+ques 14) write a query to display all the record of the employee whose salary is greater than and equals to 25000 from employee table?
 A. select * from employee where salary>=25000;
 
-ques 6) write a query to display all the record of the employee whose salary is less than to 25000 from employee table?
+ques 15) write a query to display all the record of the employee whose salary is less than to 25000 from employee table?
 A. select * from employee where salary<25000;
 
-ques 7) write a query to display all the record of the employee whose salary is less than and equals to 25000 from employee table?
+ques 16) write a query to display all the record of the employee whose salary is less than and equals to 25000 from employee table?
 A. select * from employee where salary<=25000;
 
-ques 8) write a query to display all the record of the employee whose salary is greater than and equals to 25000 from employee table?
+ques 17) write a query to display all the record of the employee whose salary is greater than and equals to 25000 from employee table?
 A. select * from employee where salary>=25000;
 
-ques 8) write a query to display all the record of the employee whose salary is not equal to 25000 from employee table?
+ques 18) write a query to display all the record of the employee whose salary is not equal to 25000 from employee table?
 A. select * from employee where salary!=25000;
 	or
       select * from employee where salary<>25000;
