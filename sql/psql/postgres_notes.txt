@@ -242,7 +242,69 @@ NOT operator :
 ques 25)write a query to display all the employees except in deptno 20?
 ans. select * from employee where not deptno=20;
 =========================================================================
+ques ) write a query to display all the record of the employee excluding HR whose is working in deptno is 30 from the employee table?
+ans.     select * from employee where not (designation='hr' and deptno=30);
 
+
+ques ) write a query to display all the employee who has hired after jan 2015 and  working  as tester in deptno 20 or all the employee who has hired before 2015              from the employee table?
+ans.     select * from employee where (hiredate>'2015-01-31 and designation='tester'and deptno=20) or hiredate<'2015-01-01';
+
+ques ) write a query to display all the record of the employee whose working  in deptno 10 or 20 or 30 or 40 or 50 from the employee table?
+ans.     select * from employee where deptno=10 or deptno=20 or deptno=30 or deptno=40 or deptno=60;
+
+SPECIAL OPERATOR :
+=================
+    1.IN 
+         syntax:
+         =====
+	select * from table_name where coloumn_name in (value1 ,value2 ,-------,value n);
+
+ques ) write a query to display all the record of the employee whose working  in deptno 10 or 20 or 30 or 40 or 50 from the employee table?
+select * from employee where deptno in (10,20,30,40,50);
+
+ques ) write a query to display all the record of the employee whose working  as salesman, manager or admin from the employee table?
+ans. select * from employee where designation in ('salesman','manager','admin');
+
+    2.NOT IN
+           syntax :
+           =====
+	select * from table_name where coloumn_name not in (value1 ,value2 ,-------,value n);
+
+ques ) write a query to display all the details of the employee who are working  in deptno 50 or 40 or 30 and excluding salesman and hr from the employee table?
+ans.     select * from employee where deptno in (50,40,30) and designation not in ('salesman','hr');
+     
+     3. BETWEEN 
+            syntax:
+            =====
+	select * from table_name where coloumn_name  between value1  and value2 ;
+	
+ques ) write a query to display all the record of the employee whose salary with in 20000/- to 40000/- from the employee table?
+ans.     select * from employee where salary>20000 and salary<40000;
+
+ques ) write a query to display all the record of the employee who where hired in 2014 from the employee table?
+ans.     select * from employee where hiredate between '2014-01-01' and '2014-12-31';
+
+ques ) write a query to display ename, salary of the employee who are working in deptno in 10 or 20 and there annual salary with in 40000/- to 50000/- from the             employee table?
+ans.     select ename , salary*12 as annual_salary from employee where deptno in(10,20) and salary between 40000 and 50000 ;
+
+     4. NOT BETWEEN 
+            syntax:
+            =====
+	select * from table_name where coloumn_name  not between value1  and value2 ;
+
+ques ) write a query to display all the record excluding those who are hired in 2017 from the employee table?
+ans. select *  from employee where hiredate not between '2017-01-01' and '2107-12-31';
+
+     5. IS 
+           syntax:
+           =====
+	select * from table_name where coloumn_name  is null  ;
+
+     5. IS NOT
+           syntax:
+           =====
+	select * from table_name where coloumn_name  is not null  ;
+=======================================================================
 
 
 	
