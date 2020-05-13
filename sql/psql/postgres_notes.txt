@@ -28,105 +28,115 @@ ans.       \! cls
 Syntax to change one database to another database :
 ===================================
 	\c database_name
-ques 7) write a commad to change the database ?
+
+ques 7)  write a commad to change the database ?
 ans.        \c employee
 
+DDL:
+====
 syntax for create command :
-
+===================
 	create table table_name ( column1  datatype  constraints ,column2  datatype  constraints ,-----,column n  datatype  constraints);
 
+que 8) write a query to create a table called employee ?
+ans.       create table person( name varchar , designation varchar , dob date  , emailid varchar );
+
 syntax for alter command :
+===================
+     add column by using alter command :
+     =========================
+	alter table table_name add column column_name datatype
 
-add column by using alter command:
+que 9)  write a query to add column name by using alter ?
+ans.       alter table person add column age int;
 
-	alter table table_name add column column_name datatype:
+     drop column by using alter command :
+     ==========================
+	alter table table_name drop column column_name
+ 
+que 10) write a query to drop column name by using alter ?
+ans.        alter table person drop column age;
 
-add column by using alter command:
-
-	alter table table_name drop column column_name :
-
-rename column name by using alter command:
-	
+rename column name by using alter command :
+================================	
 	alter table table_name rename column old_column_name to new_column_name:
-	
-rename table name by using alter command:
 
+que 11) write a query to rename column name by using alter ?
+ans.       alter table person rename  name to pname;
+
+rename table name by using alter command :
+===============================
 	alter table old_table_name rename to new_table_name;
 
-rename database name by using alter command:
+que12) write a query to rename table name by using alter ?
+ans.       alter table person rename  to emp;
 
+rename database name by using alter command :
+=================================
 	alter database old_database_name to new_database_name ;
 
-syntax for drop command:
+que 13) write a query to rename database name by using alter ?
+ans.       alter database testdb rename  to test;
 
+syntax for drop command :
+==================
 	drop database dbname;
+
+que 14) write a query to drop a database by using drop command ?
+ans.        drop database test;
 
 DML:
 
 syntax for insert  command:
+===================
 	insert into table_name(column_name1,column_name2,column_name3 ,column_name4,.........,column_name n)
 	values (value1,value2,value3,value4,.......,value n);
+					or
+	insert into table_name values (value1,value2,value3,value4,.......,value n);
 
-insert into table_name values (value1,value2,value3,value4,.......,value n);
-
+que 15) write a query to insert values into person table ?
+ans.        insert into person values ( 'ram' , 'student' , '1998-01-01'  , 'sai@gmail.com' );    
 
 
 
 DQL:
 ========
-select command----> It helps to retrive the data from table.
-
-3 different ways to retrive the data from the table:
-
-1. projection   eg----->select *  from employee;
-2. selection	     eg----->select ename from employee;
-3. join
-
 Syntax for select command:
-
-select * /[Distinct name]column_name/expression[alias] from table_name;
-
-eg----->select *  from employee;
-
-
-eg----->select ename from employee;
-
+===================
+	select * /[Distinct name]column_name/expression[alias] from table_name;
+que 16) write a query to display the employee table ?
+ans.        select *  from employee;
 
 update:
-============
-eg----->update employee  set salary=25000.00;
-
+=====
 syntax:
 ========
-eg----->update table_name set column_name=value;
-eg----->update employee set sal=30000.00 where empid=8;
+	update table_name set column_name=value;
+
+que 17) write a query to update the salary ?
+ans.        update employee  set salary=25000.00;
 
 delete:
-============
-delete form employee;
-
-
+=====
 syntax:
-============
-delete from table_name;
-delete from employee where empid=9;
+=====
+	delete from table_name;
+
+que 18) write a query to delete a employee table ?
+ans.        delete form employee;
 
 synatx for where clause:
 =================
-select column1,cloumn2/* from table_name where condition;
-order of execution:
-eg------>select  * from employee empid=3;
+	select column1,cloumn2/* from table_name where condition;
 
-===============
-1. From
-2. Where
-3. Select
-===============================
+que 19) write a query to display the empid is 3 from empolyee table ?
+ans.  select  * from employee empid=3;
+============================================================
 
-1)  write a query to delete a record empid is 4?
+que 20) write a query to delete a record empid is 4?
 A. delete from employee where empid=4;
 
-2) write a query to display designation of the employees?
+que 21) write a query to display designation of the employees?
 A. select designation from employee;
 
 Alias:
@@ -137,30 +147,30 @@ Alias:
 			(or)
 	select column_name  alias_name from table table_name;
 
-3) write a query to display  the  column name designation as job_type ?
+que 22) write a query to display  the  column name designation as job_type ?
 A.  select designation job_type from employee;
 		or
       select designation as job_type from employee;
 
-4) write a query to add the values and provide alias name to identify them?
+que 23) write a query to add the values and provide alias name to identify them?
 A. select 8*9 as multiplication;
 
 Assignment :
 =========
 
-5) write a query to display employee name with his current salary and salary with hike 25% for all the employees?
+que 24) write a query to display employee name with his current salary and salary with hike 25% for all the employees?
 A. select ename , salary as current_salary , salary+((salary*25)/100) as hike_salary from employee;
 
-6) write a query to display all the record of the employee  with increment salary as 500 for each employee?
+que 25) write a query to display all the record of the employee  with increment salary as 500 for each employee?
 A. select *,salary+500 as Increment_salary from employee;
 
-7) write a query to display all the record of the employee  with decrement salary as 500 for each employee?
+que 26) write a query to display all the record of the employee  with decrement salary as 500 for each employee?
 A. select *,salary-500 Decrement_salary from employee;
 
-8) write a query to display employee name ,salary and annual salary for all the employees?
+que 27) write a query to display employee name ,salary and annual salary for all the employees?
 A. select ename ,salary ,salary*12  as  Annual_salary from employee;
 
-9) write a query to display employee per day salary?
+que 28) write a query to display employee per day salary?
 A. select salary/30 as day_salary from employee;
 
 ===========================================
@@ -168,37 +178,182 @@ DISTINCT :
         Syntax:
 	select distinct column_name from table_name;
 
-ques 10) write a query to display the designation by using distinct keyword from the employee table?
+ques 29) write a query to display the designation by using distinct keyword from the employee table?
 A.select distinct designation from employee;
 
-ques 11) write a query to display the designation   and deptno by using distinct keyword from the employee table?
+ques 30) write a query to display the designation   and deptno by using distinct keyword from the employee table?
 A. select distinct designation,deptno from employee;
 
 comparison operator:
 -------------------------
-ques 12) write a query to display all the record of the employee whose deptno is 10 from employee table?
+ques 31) write a query to display all the record of the employee whose deptno is 10 from employee table?
 A.  select * from employee where deptno=10;
 
-ques 13) write a query to display all the record of the employee whose salary is greater than 25000 from employee table?
+ques 32) write a query to display all the record of the employee whose salary is greater than 25000 from employee table?
  A. select * from employee where salary>25000;
 
-ques 14) write a query to display all the record of the employee whose salary is greater than and equals to 25000 from employee table?
+ques 33) write a query to display all the record of the employee whose salary is greater than and equals to 25000 from employee table?
 A. select * from employee where salary>=25000;
 
-ques 15) write a query to display all the record of the employee whose salary is less than to 25000 from employee table?
+ques 34) write a query to display all the record of the employee whose salary is less than to 25000 from employee table?
 A. select * from employee where salary<25000;
 
-ques 16) write a query to display all the record of the employee whose salary is less than and equals to 25000 from employee table?
+ques 35) write a query to display all the record of the employee whose salary is less than and equals to 25000 from employee table?
 A. select * from employee where salary<=25000;
 
-ques 17) write a query to display all the record of the employee whose salary is greater than and equals to 25000 from employee table?
+ques 36) write a query to display all the record of the employee whose salary is greater than and equals to 25000 from employee table?
 A. select * from employee where salary>=25000;
 
-ques 18) write a query to display all the record of the employee whose salary is not equal to 25000 from employee table?
+ques 37) write a query to display all the record of the employee whose salary is not equal to 25000 from employee table?
 A. select * from employee where salary!=25000;
 	or
       select * from employee where salary<>25000;
 ===============================================================	
+AND operator :
+==========
+       syntax :
+       ======
+	select * from table_name where condition _1 and condition_2;
+
+ques 38)write a query to display all the records whose working as hr in deptno 10 from the employee table?
+ans. select * from employee where designation ='hr' and deptno=10;
+
+ques 39)write a query to display all the records whose working as salesman and hired after 2016 from the employee table?
+ans. select * from employee where designation ='salesman' and hiredate>'2016-12-31';
+
+ques 40)write a query to display all the employees whose working  in deptno 20 and salary should be 25000/-rs from the employee table?
+ans. select * from employee where designation ='hr' and deptno=20 and salary>25000;
+
+OR operator :
+==========
+        syntax :
+        =====
+	select * from table_name where condition _1 or condition_2;	
+
+ques 41)write a query to display all the records whose is working as hr in deptno 20 or 10 from the employee table?
+ans.  select * from employee where deptno=10 or deptno=20;
+
+ques 42)write a query to display all the records whose working as hr in deptno 20 or 10 from the employee table?
+ans. select ename, salary ,deptno from employee where designation='tester' or salary=15000;
+
+ASSIGNMENT:
+
+ques 43) write a query to display  name of all the employees whose is working as a tester as well as working in deptno 30 or working as a clerk whose salary is                     greater than or equal to 15000/- from the employee table? 
+ans. select ename from employee where (designation='testor' and deptno=30) or (designation='clerk' and salary >= 15000);
+
+NOT operator :
+===========
+        syntax :
+        ======
+	select * from table_name where not condition;
+
+ques 44)write a query to display all the employees except in deptno 20?
+ans. select * from employee where not deptno=20;
+
+=========================================================================
+ques 45) write a query to display all the record of the employee excluding HR whose is working in deptno is 30 from the employee table?
+ans.     select * from employee where not (designation='hr' and deptno=30);
+
+ques 46) write a query to display all the employee who has hired after jan 2015 and  working  as tester in deptno 20 or all the employee who has hired before 2015   from the employee table?
+ans.     select * from employee where (hiredate>'2015-01-31 and designation='tester'and deptno=20) or hiredate<'2015-01-01';
+
+ques 47) write a query to display all the record of the employee whose working  in deptno 10 or 20 or 30 or 40 or 50 from the employee table?
+ans.     select * from employee where deptno=10 or deptno=20 or deptno=30 or deptno=40 or deptno=60;
+
+SPECIAL OPERATOR :
+=================
+    1.IN 
+         syntax:
+         =====
+	select * from table_name where coloumn_name in (value1 ,value2 ,-------,value n);
+
+ques 48) write a query to display all the record of the employee whose working  in deptno 10 or 20 or 30 or 40 or 50 from the employee table?
+select * from employee where deptno in (10,20,30,40,50);
+
+ques 49) write a query to display all the record of the employee whose working  as salesman, manager or admin from the employee table?
+ans. select * from employee where designation in ('salesman','manager','admin');
+
+    2.NOT IN
+           syntax :
+           =====
+	select * from table_name where coloumn_name not in (value1 ,value2 ,-------,value n);
+
+ques 50) write a query to display all the details of the employee who are working  in deptno 50 or 40 or 30 and excluding salesman and hr from the employee table?
+ans.     select * from employee where deptno in (50,40,30) and designation not in ('salesman','hr');
+     
+     3. BETWEEN 
+            syntax:
+            =====
+	select * from table_name where coloumn_name  between value1  and value2 ;
+	
+ques 51) write a query to display all the record of the employee whose salary with in 20000/- to 40000/- from the employee table?
+ans.     select * from employee where salary>20000 and salary<40000;
+
+ques 52) write a query to display all the record of the employee who where hired in 2014 from the employee table?
+ans.     select * from employee where hiredate between '2014-01-01' and '2014-12-31';
+
+ques 53) write a query to display ename, salary of the employee who are working in deptno in 10 or 20 and there annual salary with in 40000/- to 50000/- from the             employee table?
+ans.     select ename , salary*12 as annual_salary from employee where deptno in(10,20) and salary between 40000 and 50000 ;
+
+     4. NOT BETWEEN 
+            syntax:
+            =====
+	select * from table_name where coloumn_name  not between value1  and value2 ;
+
+ques 54) write a query to display all the record excluding those who are hired in 2017 from the employee table?
+ans. select *  from employee where hiredate not between '2017-01-01' and '2107-12-31';
+
+     5. IS 
+           syntax:
+           =====
+	select * from table_name where coloumn_name  is null  ;
+
+     5. IS NOT
+           syntax:
+           =====
+	select * from table_name where coloumn_name  is not null  ;
+=======================================================================
+
+like operator :
+==========
+       syntax :
+       =====
+	select * from table_name where column_name like '% / _';
+
+que 55) write a query to display all the records whose name starts with 'r' ?
+ans.   select * from employee where ename like 'r%';
+
+que 56) write a query to display all the records whose name contains 3 characters ?
+ans.   select * from employee where ename like '___';
+
+que 57) write a query to display all the records of the employee name who has atleast two 'L'  in their names from the employee table ?
+ans.   select * from employee where ename like '%l%l%';
+
+que 58) write a query to display all the records of the employee whose name starts with 's' and ends with 'p' ?
+ans.   select * from employee where ename like 's%p';
+
+que 59) write a query to display all the records of the employee whose name length 5 and starting character should be 's' and 'l' should 
+          be 2nd last character ?
+ans.   select * from employee where ename like 's--l-';
+
+que 60) write a query to display all the details of the employee if the employee name begins with 's' or 'a' ?
+ans.    select * from employee where ename like 's%' or ename like 'a%';
+
+que 61) write a query to display all the details of the employee excluding whose  name begins with 'z' and 'p' ?
+ans.   select * from employee where ename not like 'z%' and ename not like 'p%';
+===========================================================================
+
+
+
+
+
+
+
+
+
+
+
+	
 
 
 
