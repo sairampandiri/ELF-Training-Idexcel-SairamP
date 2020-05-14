@@ -342,14 +342,72 @@ ans.    select * from employee where ename like 's%' or ename like 'a%';
 que 61) write a query to display all the details of the employee excluding whose  name begins with 'z' and 'p' ?
 ans.   select * from employee where ename not like 'z%' and ename not like 'p%';
 ===========================================================================
+Functions:
+=======
+1. Aggregate Functions:
+    avg() :
+    ====
+    syntax:
+	select avg(column_name) from table_name;
+
+que62) write a query to display avg of the employee salary from the employee table?
+ans.        select avg(salary) from employee;
+
+    count() :
+    =====
+    syntax:
+	select count(column_name) from table_name;
+
+ que63) write a query to display count of the employee  from the employee table?
+ans.        select count(*) as noofcount from employee;
 
 
+    max() :
+    ====
+    syntax:
+	select max(column_name) from table_name;
 
+que64) write a query to display maximum salary of the employee  from the employee table?
+ans.         select max(salary) from employee;
+ 
 
+    min() :
+    ====
+    syntax:
+	select min(column_name) from table_name;
 
+que65) write a query to display minimum salary of the employee  from the employee table?
+ans.         select min(salary) from employee;
+   
+    sum() :
+    ====
+    syntax:
+	select sum(column_name) from table_name;
 
+que66) write a query to display sum of the salary of the employee  from the employee table?
+ans.         select sum(salary) from employee;
 
+que66) write a query to display sum,max,min,avg,count of the salary of the employee  from the employee table?
+ans.      select sum(salary) sumsal, max(salary) maxsalary, min(salary) minsal,avg(salary) avgsal, count(salary) countsal from employee;       
+===============================================================================================
+order by clause :
+===========
+    syntax:
+	select column1/* from table_name order by coulmn1 ASC/DESC;
 
+que67) write a query to display of the employee salary in descending order ?
+ans.       select * from employee order by salary desc;
+
+que68) write a query to display all the detail of the employee and sort the record in desc order of hiredate if there are more than one employee hired on samedate 
+             when the highest salary should be shown first?
+ans.       select * from employee order by hiredate desc ,salary desc;
+
+que 69) write a query to display the name of the employee, salary and annual salary and sort the record in the desc order?
+ans.       select ename,salary,salary*12 annualsalary from employee order by annualsalary desc;
+
+que 70) write a query to display the name ,designation of the employee who are working in either department 10,20,40 and sort the record in asc order by salary?
+ans.        select ename,designation from employee where deptno in(10,20,40) order by salary;
+=====================================================================================
 
 
 

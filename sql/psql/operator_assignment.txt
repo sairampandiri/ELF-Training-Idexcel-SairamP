@@ -1,3 +1,6 @@
+				queries on operator assignment
+				======================
+
 que 1) LIST ALL THE EMPLOYEES WHOSE SALARY IS NULL 
 ans. select ename from employee where salary is null;
 
@@ -20,13 +23,13 @@ ans.  select * from employee where deptno not in(10,20);
 ans. select * from employee where ename not like 's%';
 
 8) LIST ALL THE EMPLOYEES WHO ARE HAVING REPORTING MANAGERS IN DEPT 10
-
+ans.  select ename from employee where rmgr is not null and deptno=10;
 
 9) LIST ALL THE EMPLOYEES WHOSE SALARY IS NULL AND WORKING AS CLERK
 ans. select * from employee where designation='clerk' and salary is null;
 
 10) LIST ALL THE EMPLOYEES WHO DON’T HAVE A REPORTING MANAGER IN DEPTNO 10 OR 30
-
+ans. select ename from employee where rmgr is null and deptno in (10,30);
 
 11) LIST ALL THE SALESMEN IN DEPT 30 WITH SAL MORE THAN 2450
 ans. select * from employee where designation='salesman' and deptno=30 and salary>2450;
@@ -44,7 +47,7 @@ ans.  select ename ,salary*12 as annual_salary from employee where deptno!=30;
 ans. select ename from employee where ename not like '%es' and ename not like '%r';
 
 16) LIST ALL THE EMPLOYEES WHO ARE HAVING REPORTING MANAGERS IN DEPT 10 ALONG WITH 10% HIKE IN SALARY
-
+ans. select ename,salary+(salary*10)/100 as hike_salary from employee where rmgr is not null and deptno=10;
 
 17) DISPLAY ALL THE EMPLOYEE WHO ARE ‘SALESMAN’S HAVING ‘E’AS THE LAST BUT ONE CHARACTER  IN ENAME BUT SALARY 
 HAVING EXACTLY 4 CHARACTER
@@ -73,7 +76,6 @@ ans. select * from employee where hiredate between '1983-01-01' and '1986-12-31'
 
 25)WAQTD ALL THE DETAILS OF EMPLOYEES HIRED IN NOVEMBER AND DECEMBER.
 ans. select ename from employee where cast(hiredate as varchar) like '____-11-__' or cast(hiredate as varchar) like '____-12-__';
-
 
 26)LIST ALL THE EMPLOYEE NAMES AND COMISSION FOR THOSE EMPLOYEES WHO EARN COMISSION MORE THAN THEIR SALARY
 ans. select ename,comm from employee where comm>salary;
