@@ -408,11 +408,27 @@ ans.       select ename,salary,salary*12 annualsalary from employee order by ann
 que 70) write a query to display the name ,designation of the employee who are working in either department 10,20,40 and sort the record in asc order by salary?
 ans.        select ename,designation from employee where deptno in(10,20,40) order by salary;
 =====================================================================================
+group by clause :
+============
+    syntax:
+	select * from table_name where condition group by column_name;
 
+que 71)  write a query to display no. of count of the employee working in each department ?
+ans.         select count(*) from employee group by deptno;	
 
+que 72)  write a query to display the highest salary of the employee in each department ?
+ans.         select max(salary),deptno from employee group by deptno;
 
-	
+que 73)  write a query to display no. of tester working in each department ?
+ans.         select deptno,count(designation) from employee where designation='tester' group by deptno;
 
+having clause :
+==========
+    syntax:
+	select * from table_name where(row_filter_condition) group by column_name having(group_filter_condition);
+
+que 74)  write a query to display  deptno which has atleast 2 clerk working?
+ans.         select deptno from employee where designation='clerk' group by deptno having count(*)>=2;
 
 
 
