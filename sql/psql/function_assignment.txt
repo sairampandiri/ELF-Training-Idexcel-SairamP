@@ -22,7 +22,7 @@ ans. select ename from employee where length(ename)-length(replace(ename,'l','')
 ans. select distinct dname from employee where length(dname)-length(replace(dname,'o',''))>=1;
 
 8. Display the output as shown below,   Scott working as a clerk earns 3000 in dept 20
-ans.  select concat(upper(ename),concat(' working as a ' ,concat(designation ,concat(' earns ',concat(salary,concat('in ',deptno)))))) from employee;
+ans.  select concat(initcap(ename),concat(' working as a ' ,concat(lower(designation) ,concat(' earns ',concat(salary,concat('in dept ',deptno)))))) from employee;
 
 9. Calculate number of L in string 'HELLLLL'
 ans.  select length('helllll')-length(replace('helllll','l','')) as "no.of l";
