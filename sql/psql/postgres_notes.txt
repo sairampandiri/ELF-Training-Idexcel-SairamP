@@ -429,22 +429,36 @@ having clause :
 
 que 74)  write a query to display  deptno which has atleast 2 clerk working?
 ans.         select deptno from employee where designation='clerk' group by deptno having count(*)>=2;
+========================================================================================
+que 75) write a query to display deptno which has total salary greater than 10,000/- in each department ?
+ans.        select deptno from employee group by deptno having sum(salary)>10000;
 
+que 76) write a query to display deptno which has atleast two employee hired into the same date ?
+ans. select deptno from  employee group by hiredate,deptno having count(*)>=2;
 
+que 77) write a query to display deptno and average salary is greater than 15,000/-  by excluding the employee whose name begins with 'r' ?
+ans.  select deptno,avg(salary) from employee where ename not like'r%' group by deptno having avg(salary)>15000 ;
+=========================================================================================
+subquery:
+=======
+     syntax :
+     =====
+	select * from table_name where column_name  operator(select */column name from table_name condition)
 
+There are two types of subquery :
 
+1. single row subquery
 
+     syntax :
+     =====
+	select * from table_name where column_name  operator[relational/comparision] (select */column name from table_name condition)
 
+2. multi row subquery
 
-
-
-
-
-
-
-
-
-
+     syntax :
+     =====
+	select * from table_name where column_name  operator[special operator-IN,ANY,ALL] (select */column name from table_name condition)
+===============================================================================================
 
 
 
