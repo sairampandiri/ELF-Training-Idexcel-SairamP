@@ -459,12 +459,32 @@ There are two types of subquery :
      =====
 	select * from table_name where column_name  operator[special operator-IN,ANY,ALL] (select */column name from table_name condition)
 ===============================================================================================
+que 78) write a query to display  name of the employee who were hired after 'rahul' ?
+ans.       select ename from employee where hiredate>(select hiredate from employee where ename='rahul');
 
+que 79) write a query to display  name of the employee who is working for research department ?
+ans.       select ename from employee where deptno=(select deptno from department_info where dname='research');
 
+que 80) write a query to display name of employee whose working in location which has atleast '1A' ?
+ans.       select ename from employee where deptno in (select deptno from department_info where location like '%a%');
 
+que 81) write a query to display second maximum salary ?
+ans.       select max(salary) from employee where salary < (select max(salary) from employee);
 
+que 82)  write a query to display maximum salary of the employee table ?
+ans.         select max(salary) from employee ;
 
+Assignment :
+=========
 
+que 83)  write a query to display name which has atleast 2 clerk ?
+ans.        select dname from department_info where deptno in (select deptno from employee 
+	where designation='clerk' group by deptno having count(*)>=2);
 
+que 84) write a query to display third maximum salary ?
+ans.       select salary from employee where salary < (select max(salary) from employee where salary < (select max(salary) from employee ));
 
-
+que 85)  write a query to display the  name of the employee who where hired before 'rahul' and there salary is greater than 'sai' ?
+ans.        select ename from employee where hiredate < (select hiredate from employee where ename='rahul') and 
+	salary > (select salary from employee where ename='sai');
+==============================================================================================
