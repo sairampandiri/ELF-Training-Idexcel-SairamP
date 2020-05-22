@@ -488,3 +488,34 @@ que 85)  write a query to display the  name of the employee who where hired befo
 ans.        select ename from employee where hiredate < (select hiredate from employee where ename='rahul') and 
 	salary > (select salary from employee where ename='sai');
 ==============================================================================================
+Joints :
+=====
+cross join :
+========
+      syntax :
+      ======
+	select */column_name from table1 cross join table2;
+
+que 86) write a query to display  the two tables by using cross join ?
+ans.        select * from employee cross join department_info;
+
+inner join :
+========
+      syntax :
+      ======
+	select */column_name from table1 inner join table2 on join condition;
+
+que 87) write a query  to display the details of all the employees and department_info by using inner join ?
+ans.       select * from employee inner join department_info on employee.deptno=department_info.deptno;
+
+que 88) write a query  to display dept name,location of all the employees whose salary is greater than or equal to 25000 ?
+ans.       select dname,location from employee as e inner join department_info as d on e.deptno=d.deptno and salary>=25000;
+
+que 89) write a query  to display ename and all the details of department if employee where hired after '2015' and working in 'delhi' or 'banglore' ?
+ans.       select ename,d.* from employee e inner join department_info d on e.deptno=d.deptno 
+	where hiredate>'2015-12-31' and location in ('delhi','banglore');
+
+que 90) write a query  to display ename and department name if the employee name starts with 's' or 't' and there dname has atleast  '1 e' in it ?
+ans.       select ename,dname from employee e inner join department_info d one.deptno=d.deptno 
+	where (ename like 's%' or ename like 't%') and dname like 'e%';
+=======================================================================================================
