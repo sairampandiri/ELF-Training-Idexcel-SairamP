@@ -1,0 +1,357 @@
+﻿					QUESTIONS on SUBQUERY
+					------------------------------------
+1.DISPLAY ALL THE EMPLOYEES WHOSE DEPARTMET NAMES ENDING 'S'
+ans.  select * from employee where deptno=(select deptno from department_info where dname like '%s');
+
+2.QUERY TO DISPLAY THE EMPLOYEE NAMES WHO IS HAVING MAXIMUM SALARY IN DEPT NAME "ACCOUNTING"
+ans. select ename from employee where deptno=(select deptno from deptartment_info where dname='Accounting') and 
+	salary=(select max(salary) from employee);
+
+3.QUERY TO DISPLAY THE DEPT NAME WHO IS HAVING HIGHEST COMMISSION
+ans. select dname from department_info where deptno=(select deptno from employee where comm=(select max(comm) from employee));
+
+4. QUERY TO DISPLAY THE EMPLOYEE NAMES WHOSE DEPARTMENT NAME HAS 2ND CHARACTER AS 'O'.
+ans.  select ename from employee where deptno=(select deptno from department_info where dname like '_o%');
+
+5. QUERY TO DISPLAY ALL THE EMPLOYEES WHO’S DEPT NUMBER IS SAME AS SCOTT.
+ans.  select ename from employee where deptno=(select deptno from employee where ename='scott');
+
+6.QUERY TO DISPLAY ALL THE EMPLOYEES IN 'OPERATIONS AND ACCOUNTING' DEPT.
+ans. select * from employee where deptno in (select deptno from department_info where dname in('accounting','operations'));
+
+7.LIST THE EMPLOYEES WHO HAS SALARY GREATER THAN MILLER
+ans. select * from employee where salary>(select salary from employee where ename='miller');
+
+8. LIST DEPARTMENT NAME HAVING ATLEAST 3 SALESMAN
+ans.  select dname from department_info where deptno=(select deptno from employee 
+	where designation='salesman' group by deptno having count(*)=3);
+
+9. DISPLAY THE DNAME OF AN EMPLOYEES WHO HAS  NO REPORTING MANAGER.
+ans.   select dname from department_info where deptno=(select deptno from employee where rmgr is null);
+
+10. LIST ALL THE EMPLOYEES WHO ARE REPORTING TO JONES MANAGER
+ans. select ename from employee where rmgr=(select rmgr from employee where ename='jones');
+
+11. LIST EMPLOYEES FROM RESEARCH&ACCOUNTING HAVING ATLEAST 2 REPORTING.
+ans. select * from employee where deptno in(select deptno from department_info where dname in('research','sales')) and empid =(select rmgr from employee 	group by rmgr having count(*)>=2 ) ;  
+
+12. DISPLAY THE DEPARTNAME OF THE EMPLOYEE WHOSE NAME DOES NOT STARTS WITH S AND SALARY BETWEEN 1500 TO 3000.
+ans. select dname from department_info where deptno in (select deptno from employee where ename not like 's%' and salary between 1500 and 3000);
+
+13.DISPLAY LOCATION OF EMPLOYEE WHOSE SALARY IS MINIMUM SALARY BUT SALARY IS GREATER THAN 2000
+ans.  select location from department_info where deptno = (select deptno from employee where salary=(select min(salary) from employee 
+	where salary>2000));
+
+14. DISPLAY THE LOCATION OF AN EMPLOYEE IN ACCOUNTING DEPARTMENT.
+ans.  select location from department_info where dname=(select dname from department_info where dname='accounting');
+
+15. DISPLAY THE DEPARTMENT ‘S LOCATION THAT IS HAVING GREATER THAN FOUR EMPLOYEES IN IT.
+ans.   select location from department_info where deptno=(select deptno from employee group by deptno having count(*)>2);
+
+16. WRITE A QUERY TO DISPLAY ALL THE EMPLOYEE WHOSE JOB NOT SAME AS ALLEN AND SALARY IS GREATER THAN MARTIN.
+ans.   select * from employee where designation != (select designation from employee where ename='allen' ) and 
+	salary>(select salary from employee where ename='martin');
+
+17. DISPLAY ALL THE EMPLOYEES WHO IS HAVING LOCATION IS SAME AS ADAM'S MANAGER?
+ans.  select * from employee where deptno=(select deptno from department_info where location=(select location from department_info 	where deptno=(select 	deptno from employee where empid=(select rmgr from employee where ename='adam'))));
+
+18. DISPLAY THE JOB, MANAGER NUMBER OF EMPLOYEES WHO IS WORKING FOR JONES?
+ans.  select designation,rmgr from employee where rmgr=(select empid from employee where ename='jones');
+
+19. DISPLAY THE EMPLOYEE NAMES, HIGHER DATE, COMMISSION OF FORD'S MANAGER?
+ans.  select ename,hiredate,comm from employee where empid=(select rmgr from employee where ename='ford');
+
+20. DISPLAY THE NUMBER OF EMPLOYEES WHO ARE GETTING SALARY LESS THAN THE BLAKE'S MANAGER
+ans.   select count(ename) from employee where salary<(select (salary) from employee where empid=(select rmgr from employee where ename='blakes'));
+
+21. LIST EMPLOYEES WHO LOCATED IN CHICAGO AND THEIR COMMISSION IS ZERO.
+ans. select * from employee where deptno =(select deptno from deptartment_info where location='chicago') and comm=0;
+
+22. LIST EMPLOYEES WHO WORK FOR SALES DEPARTMENT AND THEIR SALARY GREATER THAN AVERAGE SALARY OF THEIR DEPARTMENT.
+ans. select * from employee where deptno=(select deptno from deptartment_info where dname='sales') and salary>any(select avg(salary) from employee 
+	group by deptno );
+
+23. LIST EMPLOYEES WHO ARE WORKING IN RESEARCH DEPARTMENT AND THEY ARE MANAGER.
+ans. select  ename from employee where deptno=(select deptno from department_info where dname='research') and empid in (select rmgr from employee);
+
+24. DISPLAY DEPARTMENT NAME OF THE EMPLOYEES WHO EARN COMMISSION.
+ans. select dname from department_info where deptno in(select deptno from employee where comm is not null);
+
+25. DISPLAY DEPARTMENT NAME OF THE EMPLOYEE WHO EARN MAXIMUM SALARY AND HAVE NO REPORTING MANAGER.
+ans. select dname from department_info where deptno in(select deptno from employee salary=(select max(salary) from employee) and rmgr is null);
+
+26.  TO BLAKE AND HAVE COMMISSION WITHOUT USING NULL OR NOT NULL
+ans. select * from employee where rmgr=(select empid from employee where ename='BLAKE') and comm>0;
+
+27. LIST ALL THE DEPTNAME AND LOC OF ALL THE SALESMAN MANAGER-MANAGER'S
+ans. select dname,location from department_info where deptno =(select deptno from employee where empid=(select rmgr from employee where empid in	(select rmgr from employee where desgination='salesman')));
+
+28. LIST THE EMPLOYEE DEPTNAME AND LOC OF ALL THE EMPLOYEES WHO ARE CLERK ,REPORTING TO BLAKE AND SALARY IS LESSER THAN MARTIN SALARY
+ans. select dname,location from department_info where deptno in(select deptno from employee where desgination='clerk'and salary<(select salary from employee where ename='martin'));
+
+29. LIST THE EMPLOYEES WHO DOES NOT DIRECTLY REPORT TO PRESIDENT,HAVE COMMISSION AND SALARY MORE THAN MAX SALARY OF ALL THE CLERK WITHOUT USING NULL OR NOT NULL
+ans. select * from employee where rmgr!=(select empid from employee where desgination='president') and comm>(select max(salary) from employee where desgination('clerk')) and salary(select max(salary) from employee where desgination('clerk'));
+
+30. LIST THE EMPLOYEES WHO JOINED AFTER 2 YEARS OF FIRST EMPLOYEE OF THE COMPANY AND MORE THAN BLAKE SALARY
+ans.  select * from employee where hiredate>all(select min(hiredate)+(365*2) from employee) and salary>(select salary from employee where ename='BLAKE');
+
+31. DISPLAY LOCATION OF ALL THE EMPLOYEES WHO REPORTING TO BLAKE
+ans. select location from department_info where deptno in(select deptno from employee where rmgr=(select empid from employee where ename='BLAKE'));
+
+32. LIST ALL THE EMPLOYEES WHOSE JOB IS SAME AS JONES AND THEIR SALARY LESSER THAN SCOTT
+ans. select * from employee where desgination=(select desgination from employee where ename='JHONES') and salary<(select salary from employee where ename='SCOTT');
+
+33.DISPLAY ALL THE EMPLOYEES OF DEPARTMENT 30, 20 WITH THERE ANUAL SALARY AND HAVING ATLEAST 3 EMPLOYEES
+ans. select deptno,salary*12 "annual salary" from employee where deptno in(30,20) group by deptno,salary having count(*)>=3;
+
+34.DISPLAY ALL THE EMPLOYEES WHO ARE EARN LESS THAN ANY OF THE SALESMAN?
+ans. select * from employee where salary<(select min(slary) from employee where desgination='salesman');
+
+35.DISPLAY ALL THE EMPLOYEES WHO ARE JOINED BEFORE THE LAST PERSON?
+ans.  select * from employee where hiredate<(select max(hiredate) from employee);
+
+35.FIND 3RD MINIMUM SALARY IN THE EMPLOYEE TABLE.
+ans.  select min(salary) from employee where salary>(select min(salary) from employee where salary>(select min(salary) from employee)); 
+
+36.DISPLAY ALL THE EMPLOYEES WHO ARE EARNING MORE THAN ANY OF THE MANAGER.
+ans.  select * from employee where salary>(select max(salary) from employee where desgination='Manager');
+
+37.LIST EMPLOYEES WHO JOINED AFTER 4 YEARS OF 1ST EMPLOYEE OF THE COMPANY AND LESS THAN BLAKE SALARY.
+ans. select * from employee where hiredate>(select min(hiredate)+(365*4) from employee) and salary<(select salary from employee where ename='BLAKE');
+
+38.DISPLAY THE DEPARTMENT INFORMATION OF EMPLOYEE WHO IS WORKING FOR NEW YORK LOCATION
+ans. select * from department_info where location='newyork';
+
+39.DISPLAY LOCATION OF EMPLOYEES, WHOSE NAME DOESN'T START WITH A AND SALARY BETWEEN 1000 AND 3000.
+ans. select location from department_info where deptno in(select deptno from employee where ename like'A%' and salary between 10000 and 40000);
+
+40. DISPLAY DEPARTMENT NAME OF ALL THE EMPLOYEES WHO ARE REPORTING TO BLAKE.
+ans. select dname from department_info where deptno in(select deptno from employee where empid in(select rmgr from employee where ename='blake'));
+
+41. DISPLAY MARTIN'S MANAGER'S MANAGER'S DEPARTMENT NAME AND  LOCATION.
+ans. select dname,location from department_info where deptno in(select deptno from employee where empid=(select rmgr from employee where empid=(select rmgr from employee where ename='martin'));
+
+42.DISPLAY THE MANAGER NUMBER,JOB AND DEPARTMENT NUMBER FOR THOSE WHO DON'T HAVE COMMISSION IN THE LOCATION CHICAGO OR DALLAS
+ans. select rmgr,deptno from employee where comm is null and deptno in(select deptno from department_info where location in('CHICAGO','DALLAS');
+
+43.DISPLAY THE EMPLOYEE DETAILS WITH THEIR ANNUAL SALARY WHO EARN MAXIMUM COMMISSION
+ans. select *,salary*12 annual_salary from employee where comm=(select max(comm) from employee);
+
+44.DISPLAY ALL THE EMPLOYEE WHOSE DEPARTMENT IS SALES AND WHO IS EARNING SOME COMMISSION 
+	(I.E COMMISSION IS NOT NULL OR ZERO)AND WHO IS HIRED BEFORE THE LAST PERSON HIRED.
+ans. select * from employee where deptno in(select deptno from department_info where dname='sales') and comm is not null and hiredate<(select max(hiredate) 		from employee);
+ 
+45.DISPLAY ALL THE DEPARTMENT NAMES FOR WARD'S MANAGER'S MANAGER 
+ans. select dname from department_info where deptno in( select deptno from employee where empid=(select rmgr from employee where empid=(select rmgr 		from employee where ename='WARD')));     
+
+46:DISPLAY DEPARTMENT NAMES OF EMPLOYEE'S WHOSE SALARY IS GREATER THAN AVERAGE SALARY OF ALL THE CLERK'S
+ans. select dname from department_info where deptno in(select deptno from employee where salary>(select avg(salary) from employee where 			desgination='clerk'));
+
+47.DISPLAY THE LAST EMPLOYEE RECORD WITH 25% HIKE IN SALARY.
+ans. select * from employee where salary=salary+(salary*12/100) and hiredate<(select max(hiredate) from employee);
+
+48.DISPLAY THE DEPARTMENT NUMBER WHO WORKING IN SALES DEPARTMENT AND THEY ARE MANAGER.
+ans. select deptno from department_info where deptno in(select deptno from employee where 
+
+49.DISPLAY DEPARTMENT NAME OF THE EMPLOYEE WHO EARN MINMUM SALARY AND HAVE REPORTING MANAGER.
+ans.  selet dname from employee where deptno in(select deptno from employee where salary=(select min(salary) from employee) and rmgr is not null);
+
+50.DISPLAY HIREDATE AND JOB OF ALL THE EMPLOYEES WORKING FOR SALES
+ans. select hiredate,desgination from employee where deptno in(select deptno from department_info where dname='sales');
+
+51.DISPLAY LOCATION AND DNAME OF EMPLOYEE WHO WORKING AS PRESIDENT
+ans. select location,dname from department_info where deptno=(select deptno from employee where desgination='president');
+
+52.DISPLAY THE DNAME OF EMPLOYEES WHOES SALARY IS MAXIMUM SALARY BUT LESSER THAN 3000
+ans. select dname from department_info where deptno in(select deptno from employee where salary=(select max(salary) from employee where salary<3000));
+
+53.DISPLAY THE DEPARTMENT NAME WHO ARE REPORTING TO ADAMS.
+ans. select dname from employee where deptno=(select deptno from employee where empid=(select rmgr from employee where ename='ADAMS'));
+
+54.DISPLAY LAST EMPLOYEE RECORD ACCORDING TO EMPNO.
+ans. select * from employee where empid=(select max(empid) from employee);
+
+55.DISPLAY ALL THE EMPLOYEE WHOSE SALARY IS GREATER THAN AVERAGE SALARY OF DEPARTMENT 30.
+ans. select * from employee where salary >(select avg(salary) from employee where deptno=30);
+
+56.DISPLAY THE NUMBER OF EMPLOYEES WHO WORK FOR RESEARCH DEPT AND THEIR SALARY IS LESSER THAN ONE OF THE SALARY IN DEPARTMENT IN 10.
+ans.  select count(*) from employee where deptno in(select deptno from department_info where dname='research') and salary <(select max(salary) from 		employee where deptno=10);
+
+57.DISPLAY THE DNAME THAT ARE HAVING CLERK IN IT.
+ans. select dname from department_info where deptno in(select deptno from employee where desgination='clerk');
+
+58.DISPLAY THE DEPARTMENT NAMES THAT ARE HAVING ATLEAST ONE L IN IT.
+ans. select dname from department_info where dname like '%l%';
+
+59. DISPLAY ALL THE EMPLOYEES WHO ARE JOINED AFTER BLAKE.
+ans. select * from employee where hiredate>(select hiredate from employee where ename='BLAKE'); 
+
+60. LIST THE DEPT NAME THAT ARE HAVING AT LEAST 3 EMPLOYEES BUT NOT MORE THAN 5 EMPLOYEES IN IT.
+ans.   select dname from department_info where deptno in(select deptno from employee group by deptno having count(*)>=3 and count(*)<=5);
+
+61. DISPLAY THE LOCATION OF ALL EMPLOYEES WHOSE REPORTING MANAGER SALARY IS GREATER THAN 2000.
+ans.  select location from department_info where deptno in(select deptno from employee where empid in(select rmgr from employee where salary<30000));
+
+63.DISPLAY ENAME,SAL OF EMPLOYEES WHO ARE EARNING MORE THAN ANY OF THE ANALYST.
+ans. select ename,salary from employee where salary in(select salary from employee where designation='analyst');
+
+64.SELECT ALL THE EMPLOYEES WHO ARE WORKING FOR CHICAGO
+ ans.  select * from employee where department_info in (select department_info from department_info where location='chicago');
+
+65. QUERY TO DISPLAY EMPLOYEE NAMES WHO IS HAVING MINIMUM SALARY IN DEPARTMENT RESEARCH.
+ans.  select ename from employee where salary in(select min(salary) from employee where deptno in(select deptno from department_info where dname='research'));
+
+66.LIST THE DEPARTMENT NAMES THAT ARE HAVING SALESMAN.
+ans.  select dname from department_info where department_info in (select department_info from employee where designation='sales_man');
+
+67. LIST THE DEPARTMENT NAMES THAT ARE HAVING AT LEAST 3 EMPLOYES IN IT.
+ans.  select dname from department_info where department_info in (select department_info from employee group by department_info having count(*)>=3);
+
+68.LIST EMPLOYEES FROM RESEARCH AND ACCOUNTING DEPARTMENT HAVING ATLEAST TWO REPORTING
+ans.  select * from employee where deptno in(select deptno from department_info where dname in('research','ACCOUNTING') and 
+	deptno in(select deptno from employee where rmgr in((select  rmgr from employee group by rmgr having count(*)>=2)));
+
+69.WRITE A QUERY TO DISPLAY EMPLOYEE NAME, JOB,LOCATION OF ALL EMPLOYEES WHO ARE WORKING AS MANAGER AND WORKS AT CHICAGO.
+ ans.  select ename,designation,location from employee where department_info in (select department_info from department_info where dname='manager' and 		location='chikago');
+
+70. SELECT ENAME OF EMPLOYEE WHO EARNS 2ND MAX SALARY AND WORKS FOR LOCATION DALLAS.
+ans.   select ename from employee where salary in (select max(salary) from employee deptno in(select deptno from department_info where 	location='dallas'));
+
+71. WRITE A QUERY TO DISPLAY THE EMPLOYEE INFORMATION WHO IS NOT TAKING COMMISSION AND JOINED COMPANY AFTER JULY 83
+ans.  select * from employee where comm =(select comm from employee where comm is null) and hiredate>'1983-06-31';
+
+72.LIST EMPLOYEES FROM SALES AND RESEARCH DEPARTMENT HAVING ATLEAST 2 REPORTING EMPLOYEES .
+ans.   select * from employee where comm>(select max(salary) from employee where desgination='sales man' and rmgr!=(select rmgr from 	employee where empid=(select empid from employee where desginatinon='KING' )));
+
+73.LIST EMPLOYEES WHO HAVE COMMISSION GREATER THAN MAXIMUM SALARY OF ALL THE SALESMAN AND WHO DO NOT REPORT TO KING DIRECTLY .
+ans.   select location from department_info where deptno in(select deptno from employee where hiredate>'1981-06-31');
+
+74.DISPLAY THE LOCATION OF ALL THE DEAPRTMENTS WHICH HAVE EMPLOYEES JOINED IN THE YEAR 81
+ans.   select location from employee where hire_date in (select hire_date from employee where hire_date between '1981-01-01' and '1981-12-31');
+
+75.DISPLAY DEPARTMENT WISE MINIMUM SALARY WHICH IS LESS THAN AVERAGE SALARY OF EMPLOYEES.
+ans.  select deptno,min(salary) from employee where salary<(select avg(salary) from employee);
+
+
+76.DISPLAY ALL THE EMPLOYEES WHO ARE REPORTING TO 'JONES'.
+ans.  select * from employee where empid=(select rmgr from employee where ename='JONES');
+
+77.DISPLAY ALL THE EMPLOYEE INFORMATION WHO ARE LIVING IN A LOCATION WHICH IS HAVING AT LEAST 2 'O' IN IT.
+ans.  select * from employee where deptno in(select deptno from department_info where location like '%o%o%' ');
+
+78.DISPLAY THE NAMES OF EMPLOYEE FROM DEPARTMENT NUMBER 10 WITH SALARY GREATER THAN THAT OF ALL EMPLOYEE WORKING IN OTHER DEPARTMENTS.
+ans.  select ename from employee where deptno=10 and salary >all(select salary from employee where deptno not in (10));
+
+79.DISPLAY THE NAMES OF EMPLOYEES WHO EARN HIGHEST SALARY IN THEIR RESPECTIVE JOBS.
+ans.  select ename from employee e where salary in (select max(salary) from employee group by designation having e.designation=designation);
+
+
+80. DISPLAY THE EMPLOYEE NUMBER AND NAME OF EMPLOYEE WORKING AS CLERK AND EARNING HIGHEST SALARY AMONG CLERKS.
+ans. select empid,ename from employee where desgination='clerk' and salary=(select max(salary) from employee where desgination='clerk'));
+
+
+81. WRITE A QUERY TO FIND SMITH'S MANAGER'S MANAGER HIREDATE.
+ans.   select hiredate from employee where empid=(select rmgr from employee where empid=(select rmgr from employee where empid=(select rmgr from 	employee where ename='SMITH')));
+
+82.LIST THE NUMBER OF EMPLOYEES WHOSE JOB IS SALESMAN WORKING FOR NEWYORK AND CHICAGO
+ans. select count(*) from employee where desgination='sales man' and deptno in(select deptno from employee where dname in('new yark',Chicago'));
+
+83. LIST THE DEPARTMENT NAMES IN WHICH THE EMPLOYEES ARE HIRED BETWEEN 1ST OF JAN 1981 AND 31ST DEC 1982 WITH SALARY MORE THAN 1800.
+ans.select dname from department_info where deptno in(select deptno from employee where hiredate between '1981-01-01' and 1982-12-31' )and salary >1800;
+
+84.DISPLAY LOCATION OF THE EMPLOYEE WHO EARN MAXIMUM SALARY AND HAVE NO REPORTING MANAGER
+ans.select location from employee where deptno in(select deptno from ep where salary=(select max(salary) from employee) and rmgr is null);
+
+85. LIST EMPLOYEES WHO WORKS FOR ACCOUNTING DEPARTMENT AND THEIR SALARY GREATER THAN AVERAGE SALARY OF THEIR DEPARTMENT
+ans.select * from employee where deptno in(select deptno from employee where salary>(select avg(salary) from employee where deptno in(select deptno from department_info where dname='ACCOUNING')
+
+86. DISPLAY LOCATION OF THE EMPLOYEE WHO EARN COMMISSION
+ans.select location from department_info where deptno in(select deptno from employee where comm is not null);
+
+87.LIST THE EMPLOYEES WHO DOES NOT DIRECTLY REPORT TO PRESIDENT,HAVE COMMISSION AND SALARY MORE THAN MAX SALARY OF ALL THE CLERK WITHOUT USING NULL OR NOT NULL
+ans.select * from employee where empid!=(select rmgr from employee where desgination='president') and comm>0 and salary>(select max(salary) from 	employee where desgination='clerk') ;
+
+88.DISPLAY ALL THE EMPLOYEES WHOSE SALARY IS GREATER THAN AVG SAL OF DEPARTMENT 20
+ans.select * from employee where salary>(select avg(salary) from employee where deptno=20);
+
+89. LIST THE EMPLOYEE DEPTNAME AND LOC OF ALL THE EMPLOYEES WHO ARE CLERK ,REPORTING TO BLAKE AND SALARY IS LESSER THAN MARTIN SALARY
+ans.select dname ,location from department_info where deptno in(select deptno from employee where desgination='clerk' and empid=(select rmgr from 	employee where ename='BLAKE') and salary>(select salary from employee where ename='MARTN'));
+
+90.DISPLAY LOC AND DNAME WHOSE JOB IS MANAGER AND HAS SAL LESS THAN CLERK.
+ans. select location,dname from department_info where deptno in(select deptno from employee where desgination='Manager' and salary<(select salary 	from employee where desgination='clerk'));
+
+91.DISPLAY EMPLOYEES LOCATION WHO HAS SOME COMMISSION.
+ans.select deptno from department_info where deptno in(select deptno from employee where comm is not null)
+
+92.DISPLAY EMPNO, ENAME, JOB, WHOSE JOB HAS 'E' IN IT AND DISPLAY EMPNO IN DESCENDING ORDER.
+ans.select empid,ename,desgination from employee where desgination like '%E%'  ordered by deptno desc;
+
+93. DISPLAY DNAME, LOC,DEPTNO OF EMPLOYEES WHO HAS SAME REPORTING MANAGER???
+ans.select dname,location,deptno from department_info where deptno in(select deptno from employee where empid=(select rmgr from employee where 	desgination='Manager'));
+
+94. DISPLAY AVG SALARY OF ALL EMPLOYEES WHOSE DEPT NAME IS ACCOUNTING???
+ans.select avg(salary) from employee where deptno in(select deptno from department_info where dname='ACCOUNTING');
+
+95. DISPLAY ALL EMPLOYEES DETAILS WHOSE HIREDATE IS IN YEAR 81???
+ans.select * from employee where hiredate=(select hiredate from employee where hiredate between '1981-01-01' and '1981-12-31';
+
+96. DISPAY DETAILS OF SMITH AND EMPLOYEES WORKING AS PRESIDENT ALONG WITH HIKE OF 35% IN SALARY.
+ans. select * from employee where ename='smith' and designation ='president' and salary =(select (salary*35)/100 from employee);
+
+97. DISPLAY NUMBER OF EMPLOYEES WHOSE COMMISSION IS MORE THAN SALARY.
+ans. select count(*) from employee where comm>ANY(select salary) from employee;	
+
+98. LIST THE EMPLOYEES WHOSE DAILY SALARY IS GREATER THAN 1500 AND WHO ARE JOINED BEFORE 1982 ONLY.
+ans. select salary/30 daily_sal ,hiredate from employee group by salary,hiredate having (salary/30)>1500 and hiredate<'1982-01-01';
+
+99. DISPLAY NUMBER OF EMPLOYEES WHOSE COMMISSION IS MORE THAN SALARY.
+ans. select count(*) from employee where comm>ANY(select salary from employee);
+
+100. LIST THE EMPLOYEES WHOSE DAILY SALARY IS GREATER THAN 1500 AND WHO ARE JOINED BEFORE 1982 ONLY.
+ans. select salary/30 daily_sal ,hiredate from employee group by salary,hiredate having (salary/30)>1500 and hiredate<'1982-01-01';
+
+101. DISPLAY ALL THE EMPLOYEES WHOSE JOB SAME AS 'SMITH' AND DEPARTMENT SAME AS 'JONES'  AND SALARY MORE THAN TURNER'
+ans.select * from employee where desgination=(select desgination from employee where ename='SMITH') and deptno=(select deptno from employee 
+	where ename='JONES') and salary >(select salary from employee where ename='TURNER');
+
+102. DISPLAY ALL THE EMPLOYEES WHOSE NAME START WITH 'S' AND HAVING SALARY MORE THAN 'ALLEN' AND LESS THAN FORD
+ans. select * from employee where ename like 's%' and salary>(select salary from employee where ename='ALLEN') and salary<(select salary from employee 		where ename='FORD');
+
+103. DISPLAY ALL THE CLERKS AND ANALYST WHO ARE NOT WORKING FOR 'DALLAS'
+ans. select * from employee where desgination in('clerk','analyst') and deptno not in(select deptno from department_info where dname='DALLAS');
+
+104. DISPLAY DEPARTMENT NAME WHICH IS HAVING AT LEAST ONE 'MANAGER'
+ans. select dname from department_info where deptno in(select deptno from employee where desgination='Manager' group by deptno having count(*)>=1);
+
+105. DISPLAY MAXIMUM SALARY OF 'SALES' DEPARTMENT
+ans. select max(salary) from employee where deptno in(select deptno from employee where dname='sales');
+
+106. DISPLAY THE 2ND MAXIMUM SALARY
+ans. select max(salary) from employee where salary<(select max(salary) from employee);
+
+107.DISPLAY THE DEPT NAME OF THE EMP WHO GETS 3RD MAXIMUM SALARY
+ans.select max(salary) from employee where salary<(select max(salary) from employee where salary<(select max(salary) from employee));
+
+108. DISPLAY ALL THE EMPLOYEES WHO ARE EARNING MORE THAN ALL THE MANAGERS(JOB).
+ans. select * from employee where salary=all(select salary from employee where desgination='manager');
+
+109. DISPLAY ALL THE EMPLOYEES WHO ARE EARNING MORE THAN ANY OF THE MANAGER(JOB)
+ans.  select * from employee where salary= all(select salary from employee where desgination='manager');
+
+110. SELECT EMPNO, JOB AND SALARY OF ALL THE ANALYST WHO ARE EARNING MORE THAN ANY OF THE MANAGER(JOB)
+ans. select empid,desgination,salary from employee where desgination='analyst' and salary>(select salary from employee where desgination='manager');
+
+111. SELECT THE DEPARTMENT NAME AND LOCATION OF ALL THE EMPLOYEES WORKING FOR CLARK.
+ans. select dname ,location from department_info where deptno in(select deptno from employee where desgination='clark');
+
+112. SELECT ALL THE EMPLOYEES WORKING FOR DALLAS
+ans. select * from employee where deptno in(select deptno from department_info where dname='DALLAS');
+
+113. DISPLAY ALL THE EMPLOYEES WHOSE SALARY IS GREATER THAN AVG SAL OF DEPARTMENT 20
+ans. select * from employee where salary>(select avg(salary) from employee where deptno=20);
+
+114.DISPLAY ALL THE EMPLOYEES WHO GETS MAXIMUM SALARY.
+ans. select * from employee where salary=(select max(salary) from employee);
+
+115.DISPLAY FIRST EMPLOYEE RECORD BASED ON HIREDATE
+ans. select * from employee where hiredate=(select min(hiredate) from employee);

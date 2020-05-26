@@ -519,3 +519,21 @@ que 90) write a query  to display ename and department name if the employee name
 ans.       select ename,dname from employee e inner join department_info d one.deptno=d.deptno 
 	where (ename like 's%' or ename like 't%') and dname like 'e%';
 =======================================================================================================
+outer join :
+=======
+      There are 3 types :
+       i.left outer join
+       ii.right outer join
+       iii.full outer join
+  left outer join :
+  =======
+      syntax :
+      =====
+	select */column_name from table1 left join table2 on join condition;
+
+  right outer join :
+  =======
+      syntax :
+      =====
+	select */column_name from table1 right join table2 on join condition;
+=========================================================================================================
