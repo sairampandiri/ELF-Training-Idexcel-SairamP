@@ -526,14 +526,85 @@ outer join :
        ii.right outer join
        iii.full outer join
   left outer join :
-  =======
+  ==========
       syntax :
       =====
 	select */column_name from table1 left join table2 on join condition;
 
   right outer join :
-  =======
+  ===========
       syntax :
       =====
 	select */column_name from table1 right join table2 on join condition;
 =========================================================================================================
+  full outer join :
+  ==========
+      syntax :
+      =====
+	select */column_name from table1 full join table2 on join condition;
+
+que 91) write a query  to display all the employee details who are belongs to department no. by using full outer join ?
+ans.       select * from employee e full join department_info d on (e.deptno=d.deptno);
+
+que 92) write a query  to obtain department name in which do not employee working in it ?
+ans.        select d.dname from department_info d left join employee e on d.deptno=e.deptno where e.deptno is null;
+ 
+que 93) write a query  to obtain department name whose is not working any department ?
+ans.       select e.ename from  employee e left join department_info d on e.deptno=d.deptno where d.deptno is  null;
+
+natural  join :
+=========
+      syntax :
+      =====
+	select */column_name from table1 natural join table2;
+========================================================================================================
+  self join :
+  =======
+      syntax :
+      =====
+	select */column_name from table t1  join table t2 on condition;
+DDL :
+====
+   Truncate :
+   =======
+      syntax :
+      ======
+	truncate table table_name;
+
+que 94) write a query  to delete all the records of the table ?
+ans.       truncate table employee;
+
+single row function (or) scalar row function :
+================================
+   1.character single row function 
+      i.case 
+          1.upper()
+
+que 95) convert all the ename to the upper case ?
+ans.       select upper(ename) from employee;
+
+          2.lower()
+
+que 96) convert all the ename to the lower case ?
+ans.       select lower(ename) from employee;
+
+          3.initcap()
+
+que 97) convert all the ename to the initcap case ?
+ans.       select initcap(ename) from employee;
+
+      ii.character
+          1. length()
+
+que 98) write a query to display length of the ename ?
+ans.       select ename,length(ename) totalchar from employee;
+
+que 99) write a query to display length of the designation ?
+ans.       select designation,length(designation) totalchar from employee;
+===================================================================================================
+          2. concat()
+          3. revrese()
+          4. replace()
+          5. substr()
+          6. instr()
+          7. trim()
