@@ -603,8 +603,150 @@ que 99) write a query to display length of the designation ?
 ans.       select designation,length(designation) totalchar from employee;
 ===================================================================================================
           2. concat()
+
+que 100) write a query to add 'kumar' after ename ?
+ans.          select concat(ename,'kumar') from employee;
           3. revrese()
+
+que 101) write a query to reverse ename ?
+ans.          select reverse(ename) from employee;
+
           4. replace()
+
+que 102) write a query to replace 'r' to 's' given string 'rahul' ?
+ans.          select replace('rahul','r','s');
+
           5. substr()
-          6. instr()
+
+que 103) write a query to get 'sql' from the given string 'postgreql' ?
+ans.          select substr('postgres',8);
+
+que 104) write a query for substring for designation ?
+ans.          select substr(designation,7,5) from employee;
+
+          6. position()
+
+que 105) write a query to find position 'post' in the given string 'postgreql' ?
+ans.          select position('post' in 'position');
+
+que 106) write a query to find 'es' in employee name in the employee table ?
+ans.          select position('es' in ename) from employee;
+
           7. trim()
+
+que 107) write a query to find 'm' from starting in the given string 'madam' ?
+ans.          select trim(leading 'm' from 'madam');
+
+que 108) write a query to find 'm' from ending in the given string 'madam' ?
+ans.          select trim(trailing 'm' from 'madam');
+
+que 109) write a query to find 'm' in the given string 'madam' ?
+ans.          select trim('m' from 'madam');
+
+Number single row function :
+=====================
+1. mod()
+======
+que 110) write a query for mod operation 10,3 ?
+ans.         select mod(10,3);
+
+que 111) write a query for mod operation in the salary with 30 ?
+ans.         select mod(salary,30) from employee;
+
+que 112) write a query for the power function using 3,2 ?
+ans.          select power(3,2);
+
+2.sqrt()
+=====
+que 113) write a query for the square root function for 2 ?
+ans.          select sqrt(2);
+=========================================================================================================
+3.abs() 
+=====
+que 114) write a query for absolute value for -122 ?
+ans.          select abs(-122);
+
+4.round()
+=======
+  case i :
+  =====
+que 115) write a query for the decimal number '6482.65' by using round function  ?
+ans.          select round(6482.65); 
+
+  case ii :
+  ======
+que 116) write a query for the decimal number  by using round function  ?
+ans.           select round(6482.655363,2);
+
+que 117) write a query for the decimal number  by using round function  ?
+ans.           select round(6482.655363,3);
+
+  case iii :
+  ======
+que 118) write a query for the decimal number  by using round function  ?
+ans.           select round(6482.655363,-1);
+
+que 119) write a query for the decimal number  by using round function  ?
+ans.           select round(6482.655363,-2);
+
+que 120) write a query for the decimal number  by using round function  ?
+ans.           select round(6482.655363,-3);
+
+5.trunc()
+======
+que 120) write a query for the decimal number  by using trunc function  ?
+ans.          trunc(67337.893);
+
+Date and Time function :
+==================
+que 121) write a query to find the current date ?
+ans.           select current_date;
+
+que 122) write a query to find the current time ?
+ans.           select current_time;
+
+que 123) write a query to find the timestamp ?
+ans.           select clock_timestamp() ;
+
+que 124) write a query to find the difference between age ?
+ans.            select age(timestamp '2020-05-29',timestamp '1998-04-07');
+
+que 125) write a query to find the difference between age  in months?
+ans.           select age(timestamp '2020-05-29',timestamp '2020-01-10');
+
+que 126) write a query to find the century from the  time stamp ?
+ans.           select extract(century from timestamp '2020-12-15');
+
+que 127) write a query to find the decade from the  time stamp ?
+ans.           select extract(decade from timestamp '2020-12-15');
+
+que 128) write a query to find the day from the timestamp ?
+ans.           select extract(day from timestamp '2020-02-15');
+
+que 129) write a query to find the dow from the timestamp ?
+ans.            select extract(dow from timestamp '2020-05-29');
+
+que 130) write a query to find the doy from the timestamp ?
+ans.            select extract(doy from timestamp '2020-05-29');
+
+que 131) write a query to find the week from the timestamp ?
+ans.            select extract(week from timestamp '2020-05-29');
+
+que 132) write a query to find the month from the timestamp ?
+ans.            select extract(month from timestamp '2020-05-29');
+
+que 133) write a query to find the hour from the timestamp ?
+ans.            select extract(hour from timestamp ' 2020-05-29 13:12:36');
+
+que 134) write a query to find the minute from the timestamp ?
+ans.            select extract(min from timestamp ' 2020-05-29 13:12:36');
+
+que 135) write a query to find the current timestamp ?
+ans.             select now();
+
+que 136) write a query to find the current date ?
+ans.             select now()::date;
+
+que 137) write a query to find the current time ?
+ans.             select now()::time;
+========================================================================================================
