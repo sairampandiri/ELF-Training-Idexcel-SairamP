@@ -86,6 +86,7 @@ que 14) write a query to drop a database by using drop command ?
 ans.        drop database test;
 
 DML:
+=====
 
 syntax for insert  command:
 ===================
@@ -97,20 +98,10 @@ syntax for insert  command:
 que 15) write a query to insert values into person table ?
 ans.        insert into person values ( 'ram' , 'student' , '1998-01-01'  , 'sai@gmail.com' );    
 
-
-
-DQL:
-========
-Syntax for select command:
-===================
-	select * /[Distinct name]column_name/expression[alias] from table_name;
-que 16) write a query to display the employee table ?
-ans.        select *  from employee;
-
 update:
 =====
 syntax:
-========
+=====
 	update table_name set column_name=value;
 
 que 17) write a query to update the salary ?
@@ -124,6 +115,14 @@ syntax:
 
 que 18) write a query to delete a employee table ?
 ans.        delete form employee;
+
+DQL:
+========
+Syntax for select command:
+===================
+	select * /[Distinct name]column_name/expression[alias] from table_name;
+que 16) write a query to display the employee table ?
+ans.        select *  from employee;
 
 synatx for where clause:
 =================
@@ -750,3 +749,48 @@ ans.             select now()::date;
 que 137) write a query to find the current time ?
 ans.             select now()::time;
 ========================================================================================================
+TCL :
+====
+1.rollback - It performs undo operation
+2.commit - COMMIT command is used to permanently save any transaction into the database.
+3.save point - SAVEPOINT command is used to temporarily save a transaction so that you can rollback to that point whenever required.
+
+Example for savepoint ?
+=================
+Insert record into table-employee 
+====================
+ insert into employee values(104,'srinu','clerk','2020-02-01',20000,23,'hemu@gmail.com',30,88881,null,240000,7);
+
+ insert into employee values(105,'hemanth','clerk','2020-02-01',20000,23,'hemu@gmail.com',30,88881,null,240000,7);
+
+savepoint test;   
+
+-->Note : It saves the above transaction details with name test and we can rollback to that point.
+
+delete from employee where empid=105;
+
+delete from employee where empid=104;
+
+rollback to savepoint test;
+
+-->Note : It will undo the operation to above savepoint name-"test".
+=====================================================================================================
+VIEW :
+=====
+
+syntax :
+=====
+	create view view_name 
+		as
+	select * from table_name where condition ;
+
+que138)write a query to display deptno=20 from the employee table by using view ?
+ans.        create view display 
+	       as
+               select * from employee_info where deptno=20;
+
+======================================================================================================
+
+
+
+
