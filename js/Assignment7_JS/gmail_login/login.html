@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .google{
+            text-align: center;
+            font-weight: 500;
+            
+        }
+        .bdr{
+            border: 1px solid rgba(139, 128, 128, 0.397);
+            margin-top: 70px;
+            margin-left: 450px;
+            margin-right: 450px;
+            border-radius: 5px;
+            
+        }
+        .format{
+            margin-top: 50px;
+        }
+        .format1{
+            width: 350px;
+            height: 30px;
+            border: 1px solid rgba(139, 128, 128, 0.397);
+            border-radius: 5px;
+            margin-left: 40px;
+            padding: 13px 15px;
+            text-decoration: none;
+        }
+        input{
+            border-color: blue;
+        }
+        
+        .ref{
+            margin-left: 40px ;
+            text-decoration: none;
+            display: inline-block;
+            text-align: left;
+            width: 360px;
+            color: #086ff5;
+        }
+        .lab1{
+            margin-left: 40px;
+            display: block;
+        }
+        .forgot{
+            padding-bottom: 25px;
+        }
+        .form2{
+            margin-left: 0px !important;
+            padding-top: 3px;
+            padding-bottom: 20px;
+        }
+        .form3{
+            padding-bottom: 40px;
+        }
+        .button1{
+            margin-left: -88px;
+            padding: 8px 30px;
+            color: white;
+            background-color: #086ff5;
+            border: #086ff5 ;
+            border-radius: 5px;
+        }
+       footer{
+           display: block;
+       }
+        li{
+            list-style: none;
+            display: block;
+            float: left;
+            padding: 10px;
+                     
+        }
+        ul{
+            margin-left: 400px;
+        }
+        li a{
+            text-decoration: none;
+            text-align: center;
+        }
+        .li2{
+            margin-left: 85px;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    
+    <div class="bdr ">
+        <p class="format google">Google</p>
+        <div class="google form3"> Sign in</br>to continue to gmail</div>
+        <input type="text" name="email" class="format1 " id="email" placeholder="Email or Phone"><br>
+        <label id="la"  style="color: red; visibility: hidden; margin-left: 40px;">Invalid Email</label>
+        <p class="forgot">
+        <a href="#" class="ref">
+            Forgot email?
+        </a>
+    </p>
+    <div class="lab1">
+            Not your computer? Use Guest mode to sign in privately.
+    
+            <a href="#" class="form2 ref">Learn more</a>
+        
+    </div>
+    
+    <p>
+        <a href="#" class="ref">Create Account</a>
+        
+        <button class="button1" onclick="validate()">Next</button>
+        <!-- <input type="button"  value="Next" > -->
+    </p>
+    </div>
+<footer>
+    
+    <ul class="ul1">
+        <li><select name="lang" id="lang">
+            <option value="1">English (United States)</option>
+        </select></li>
+        <li class="li2"><a href="#" target="_blank">Help</a></li>
+        <li class="li1"><a href="#" target="_blank">Privacy</a></li>
+        <li class="li1"><a href="#" target="_blank">Terms</a></li>
+    </ul>
+</footer>
+    <script src="/login.js"></script>
+</body>
+</html>

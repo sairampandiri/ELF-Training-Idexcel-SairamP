@@ -1,7 +1,7 @@
 function replaceVowel(word) {
-    let arrWord = word.split("")
-    let newStr = ''
-    for (let i = 0; i < arrWord.length; i++) {
+    var arrWord = word.split("")
+    var newStr = ''
+    for (var i = 0; i < arrWord.length; i++) {
         if (arrWord[i] === 'a')
             arrWord[i] = 1
         if (arrWord[i] === 'e')

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #col1,#col2{
+            border: 1px solid black;             
+            width: 48%;
+            padding-left: 10px;
+           }
+        #col2{
+            float: right;
+            padding-bottom: 455px;
+        }
+        #col1{
+            padding-bottom: 472px;
+            float: left;
+            padding-right: 28px;
+        }
+    </style>
+</head>
+<body>
+    <div id=col1>
+        <h1>Car</h1>
+        <ul id="demo" onclick="ul()">
+            <li>BMW Audi</li>
+            <li>Ferrari</li>
+            <li>Lamborghini</li>
+        </ul>
+            <input type="text" id="cars">
+            <input type="submit" onclick="insert()" value="Add New Car">
+            <button   onclick="remove()">Delete</button>
+       
+    </div>
+    <div id=col2>
+        <h1>Bike</h1>
+        <ul id="demo1" onclick="ul1()">
+            <li >Royal Enfield</li>
+            <li>Honda Activa</li>
+            <li>Kawasaki Ninja</li>
+            <li>Bajaj Pulsar</li>
+        </ul>
+           <input type="text" id="bikes">
+            <input type="submit" onclick="insert1()" value="Add New Bike">
+            <input type="submit" onclick="remove1()" value="Delete">
+    </div>
+    <script src="/append_car.js"></script>
+    <script src="/append_bike.js"></script>
+</body>
+</html>
